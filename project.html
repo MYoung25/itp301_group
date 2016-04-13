@@ -14,6 +14,13 @@
 <div id="chartcontainer">
 </div>
 
+<div id="chart2">
+</div>
+
+<div id="chart3">
+</div>
+
+
 
 <script type="text/javascript">
 var monday = 20;
@@ -21,6 +28,17 @@ var monday = 20;
 	var myChart = new JSChart('chartcontainer', 'line');
 	myChart.setDataArray(myData);
 	myChart.draw();
+	
+	var myData = new Array(['unit', 20], ['unit two', 10], ['unit three', 30], ['other unit', 10], ['last unit', 30]);
+	var myChart = new JSChart('chart2', 'pie');
+	myChart.setDataArray(myData);
+	myChart.draw();
+	
+	var myData = new Array(['unit', 20], ['unit two', 10], ['unit three', 30], ['other unit', 10], ['last unit', 30]);
+	var myChart = new JSChart('chart3', 'bar');
+	myChart.setDataArray(myData);
+	myChart.draw();
+	
 </script>
 </body>
 </html>
