@@ -146,6 +146,12 @@ for(var i=0; i < myData1.length; i++){
 	for(var i=0; i < myData.length; i++){
 		if(myData[i][0] == date){
 			console.log(myData[i][1]);
+			var high;
+			// if (myData[i][1] > myData[i-1][1]) {
+			// 	high = myData[i][1];
+			// } else {
+			// 	high = myData[i-1];
+			// }
 		}
 	}
 
