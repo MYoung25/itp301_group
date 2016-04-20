@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	width: 1000px;
+	font-size:18px;
+	margin: auto;
+	background-image: url('2.jpg');
+	
+}
+
+header{
+	background-image: url('1.jpg');
+	background-repeat: none;
+	background-position: -350px -300px;
+	font-size: 3em;
+	text-align:center;
+	height: 200px;
+}
+
+aside{
+	background-color:white;
+	width: 42%;
+	float: left;
+	padding: 4%;
+}
+
+article a{
+	color: white;
+}
+
+aside2{
+	width: 42%;
+	float: right;
+	padding: 4%;
+	text-align:right;
+	background-color:white;
+}
+
+article{
+	padding: 10%;
+	padding-top: 5%;
+	width: 80%;
+	float: left;
+	background-color: black;
+	text-align:center;
+	color: white;
+	
+}

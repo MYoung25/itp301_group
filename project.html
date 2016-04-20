@@ -4,36 +4,83 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Untitled Document</title>
 
-
+<link rel="stylesheet" type="text/css" href="main.css" />
 <script type="text/javascript" src="jscharts.js"></script>
+
 </head>
 
 <body>
 
+<header>
+Los Angeles Weather
+</header>
 
+<aside>
+<br/>
+<br/>
 <div id="chartcontainer">
 </div>
 
-<div id="chart2">
-</div>
+<p>
+In the graph above you can see the average temperatures in Fahrenheit over the past week in LA
+</p>
 
+</aside>
+
+<aside2>
+<br/>
+<br/>
 <div id="chart3">
 </div>
+
+<p>
+In the graph above you can see the high temperatures in Fahrenheit over the past week in LA
+</p>
+</aside2>
+
+<article>
+
+<h2> Weather over time in Los Angeles </h2>
+
+<p>The Los Angeles metropolitan area averages year-round moderate-to-warm weather. The climate is classified as a Mediterranean climate, which is a type of dry subtropical climate, characterized by seasonal changes in rainfall—with a dry summer and a winter rainy season—but relatively modest transitions in temperature. Under the modified Köppen climate classification, the coast is classified as Csb and the inland areas as Csa.
+</p>
+
+<p>
+The Los Angeles area is also subject to the phenomena typical of a microclimate. As such, the daytime temperatures can vary as much as 36 °F (20 °C) between inland areas such as the San Fernando Valley and San Gabriel Valley versus the coastal Los Angeles Basin.
+</p>
+
+<p>
+While on most days in Los Angeles the temperature rises above 70 degrees Fahrenheit, the city rarely gets sizzling hot.
+</p>
+
+<p>
+It never gets really cold in Los Angeles. Typically every day of the year has a high of over 50 degrees.
+</p>
+
+
+<h3> More weather sites: </h3>
+
+
+<a href="http://www.accuweather.com/"> AccuWeather.com</a> <br/>
+<a href="http://www.intellicast.com/">	Intellicast.com </a> <br/>
+<a href="http://www.weather.gov/"> Weather.gov</a> <br/>
+<a href="https://www.wunderground.com/"> WunderGround.com </a><br/>
+
+
+</article>
+
 
 
 
 <script type="text/javascript">
 var monday = 20;
-	var myData = new Array([0, monday], [10, 20], [15, 10], [20, 30], [25, 10], [30, 5], [40, 4]);
+var tuesday = 30;
+	var myData = new Array([0, monday], [10, tuesday], [15, 10], [20, 30], [25, 10], [30, 5], [40, 4]);
 	var myChart = new JSChart('chartcontainer', 'line');
 	myChart.setDataArray(myData);
 	myChart.draw();
 	
-	var myData = new Array(['Monday', 5], ['Tuesday', 10], ['Wednesday', 30], ['Thursday', 10], ['Friday', 30], ['Saturday', 5], ['Sunday', 10]);
-	var myChart = new JSChart('chart2', 'pie');
-	myChart.setDataArray(myData);
-	myChart.draw();
-	
+
 	var myData = new Array(['Monday', 5], ['Tuesday', 10], ['Wednesday', 30], ['Thursday', 10], ['Friday', 30], ['Saturday', 5], ['Sunday', 10]);
 	var myChart = new JSChart('chart3', 'bar');
 	myChart.setDataArray(myData);
