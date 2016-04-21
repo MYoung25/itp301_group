@@ -103,12 +103,13 @@ var myData1 = [<?php
 	}
 	?>];
 
+var high_array = [];
+
 // convert temperature string to integer
 for(var i=0; i < myData1.length; i++){
 	var number = parseInt(myData1[i][1]);
 	myData1[i][1] = number;
 }
-
 
 	var myChart = new JSChart('chartcontainer', 'line');
 	myChart.setDataArray(myData1);
@@ -141,26 +142,37 @@ for(var i=0; i < myData1.length; i++){
 		myData[i][1] = number;
 	}
 
+
 	var date = 19;
+	var high = -100;
 
 	for(var i=0; i < myData.length; i++){
 		if(myData[i][0] == date){
-			console.log(myData[i][1]);
-			var high;
-			// if (myData[i][1] > myData[i-1][1]) {
-			// 	high = myData[i][1];
-			// } else {
-			// 	high = myData[i-1];
-			// }
+			if(myData[i][1] > high){
+				high = myData[i][1];
+				high = parseInt(high);
+				high_array.push(["4/" + date.toString(),high]);
+				date += 1;
+			}
 		}
 	}
 
+
+	// var high = -100.0;
+	// for(var i=0; i < myData.length; i++){
+	// 	if(myData[i][0] == date){
+	// 		console.log(myData[i][1]);
+	// 		if (myData[i][1] > high) {
+	// 			high = myData[i][1];
+	// 		} 
+	// 	}
+	// }
 
 
 
 
 	var myChart = new JSChart('chart3', 'bar');
-	myChart.setDataArray(myData);
+	myChart.setDataArray(high_array);
 	myChart.draw();
 	
 	
