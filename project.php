@@ -73,8 +73,6 @@ It never gets really cold in Los Angeles. Typically every day of the year has a 
 
 
 <script type="text/javascript">
-var monday = 20;
-var tuesday = 30;
 var myData1 = [<?php 
 
 	require "DB_connect.php";
@@ -99,22 +97,11 @@ var myData1 = [<?php
 	}
 
 	while($row = mysqli_fetch_array($temp_results)){
-			echo "['". $x ."','" . $row['temp'] . "'],";
+			echo "['". $x ."'," . $row['temp'] . "],";
 	}
 	?>];
 
 var high_array = [];
-
-// convert temperature string to integer
-for(var i=0; i < myData1.length; i++){
-	var number = parseInt(myData1[i][1]);
-	myData1[i][1] = number;
-}
-
-	var myChart = new JSChart('chartcontainer', 'line');
-	myChart.setDataArray(myData1);
-	myChart.draw();
-	
 
 	var myData = [<?php 
 		for($y = 0; $y < 8; $y++){
@@ -133,30 +120,55 @@ for(var i=0; i < myData1.length; i++){
 				}
 			// 
 			while($row = mysqli_fetch_array($high_results)){
-				echo "['". $d . "','" . $row['temp'] . "'],";
+				echo "['". $d . "'," . $row['temp'] . "],";
 			}
 		}?>];
 
-	for(var i=0; i < myData.length; i++){
-		var number = parseInt(myData[i][1]);
-		myData[i][1] = number;
-	}
+	// for(var i=0; i < myData.length; i++){
+	// 	var number = parseInt(myData[i][1]);
+	// 	myData[i][1] = number;
+	// }
 
 
 	var date = 19;
 	var high = -100;
 
-	for(var i=0; i < myData.length; i++){
-		if(myData[i][0] == date){
-			if(myData[i][1] > high){
-				high = myData[i][1];
-				high = parseInt(high);
-				high_array.push(["4/" + date.toString(),high]);
-				date += 1;
-			}
-		}
-	}
-
+	// for(var i=0; i < myData.length; i++){
+	// 	if(myData[i][0] == date){
+	// 		if(myData[i][1] > high){
+	// 			high = myData[i][1];
+	// 			high = parseInt(high);
+	// 			high_array.push(["4/" + date.toString(),high]);
+	// 			date += 1;
+	// 		}
+	// 	}
+	// }
+	
+	var date = 19;
+	var high_array = [];
+	var highTempFound = true;
+	while(highTempFound)
+	{
+	   var high = -100.0;
+	   highTempFound = false;
+	   for (var i=0; i < myData.length; i++)
+	   {
+	      if(myData[i][0] == date)
+	      {
+		 if(myData[i][1] > high)
+	         {
+	            highTempFound = true;
+		    high = myData[i][1];
+		 }
+	      }
+		
+	   }
+	   if (highTempFound)
+	   {
+	      high_array.push(["4/" + date.toString(),high]);
+	      date += 1;
+	   }
+	} // while
 
 	// var high = -100.0;
 	// for(var i=0; i < myData.length; i++){
@@ -168,11 +180,31 @@ for(var i=0; i < myData1.length; i++){
 	// 	}
 	// }
 
+// // convert temperature string to integer
+// for(var i=0; i < myData1.length; i++){
+// 	var number = parseInt(myData1[i][1]);
+// 	myData1[i][1] = number;
+// }
+
+	var myChart = new JSChart('chartcontainer', 'line');
+	myChart.setDataArray(myData1);
+	myChart.setAxisNameX('Time');
+	myChart.setAxisNameY('Temp F');
+	myChart.setTitle('Temperature Over Time');
+	myChart.draw();
+	
+
+
+
 
 
 
 	var myChart = new JSChart('chart3', 'bar');
 	myChart.setDataArray(high_array);
+	myChart.setAxisNameX('Date');
+	myChart.setAxisNameY('High Temp F');
+	myChart.setTitle('High Temperatures');
+	myChart.setLineColor('#F00');
 	myChart.draw();
 	
 	
